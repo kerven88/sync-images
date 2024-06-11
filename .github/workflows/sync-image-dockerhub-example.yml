@@ -42,7 +42,7 @@ jobs:
     
     - name: 使用 Skopeo 工具同步镜像到 Aliyun
       run: |
-         skopeo copy --all  docker://docker.io/llody/weixin-robot:v1-amd64  docker://registry.cn-hangzhou.aliyuncs.com/llody55/weixin-robot:v1-amd64    
+         skopeo copy --all  docker://docker.io/llody/nginx:v1.23.4  docker://registry.cn-hangzhou.aliyuncs.com/llody55/nginx:v1.23.4   
     - name: 使用 Skopeo 工具同步镜像到 华为云
       run: |
-         skopeo copy --all docker://docker.io/llody/weixin-robot:v1-amd64  docker://swr.cn-southwest-2.myhuaweicloud.com/llody55/weixin-robot:v1-amd64
+         skopeo copy --all docker://docker.io/llody/nginx:v1.23.4  docker://swr.cn-southwest-2.myhuaweicloud.com/llody55/nginx:v1.23.4
