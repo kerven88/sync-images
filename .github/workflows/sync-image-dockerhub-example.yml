@@ -30,15 +30,15 @@ jobs:
       uses: docker/login-action@v2.2.0
       with:
         registry: registry.cn-hangzhou.aliyuncs.com
-        username: ${{ secrets.ALIYUN_DOCKER_USERNAME }}
-        password: ${{ secrets.ALIYUN_DOCKER_PASSWORD }}
+        username: ${{ secrets.ALIYUM_DOCKER_USERNAME }}
+        password: ${{ secrets.ALIYUM_DOCKER_PASSWORD }}
       
     - name: Login to Huawei Cloud Container Registry
       uses: docker/login-action@v2.2.0
       with:
         registry: swr.cn-southwest-2.myhuaweicloud.com
-        username: ${{ secrets.HUAWEI_DOCKER_USERNAME }}
-        password: ${{ secrets.HUAWEI_DOCKER_PASSWORD }}
+        username: ${{ secrets.HWYUM_DOCKER_USERNAME }}
+        password: ${{ secrets.HWYUM_DOCKER_PASSWORD }}
     
     - name: 使用 Skopeo 工具同步镜像到 Aliyun
       run: |
