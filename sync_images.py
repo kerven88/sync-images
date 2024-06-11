@@ -2,7 +2,7 @@
 Author: llody 745719408@qq.com
 Date: 2024-06-11 18:07:57
 LastEditors: llody 745719408@qq.com
-LastEditTime: 2024-06-11 18:44:52
+LastEditTime: 2024-06-11 18:46:42
 FilePath: \sync-images\.github\workflows\app\sync_images.py
 Description: 批量镜像同步脚本
 '''
@@ -31,16 +31,15 @@ for image_name, tags in images.items():
         huawei_target_image = f"docker://{huawei_registry}/{image_name}:{tag}"
         
         try:
-            # 打印源镜像信息
-            print(f"Inspecting source image {source_image}:")
-            subprocess.run(["skopeo", "inspect", "--override-arch", source_image], check=True)
-            
-            # 打印目标镜像信息
             print(f"Syncing {source_image} to {aliyun_target_image} for architecture {arch}")
             subprocess.run(["skopeo", "copy", "--all", source_image, aliyun_target_image], check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"Error syncing {source_image} to {aliyun_target_image}: {e}")
+            continue
+        
+        try:
             print(f"Syncing {source_image} to {huawei_target_image} for architecture {arch}")
             subprocess.run(["skopeo", "copy", "--all", source_image, huawei_target_image], check=True)
         except subprocess.CalledProcessError as e:
-            print(f"Error syncing {source_image}: {e}")
-            print(f"Output: {e.output}")
+            print(f"Error syncing {source_image} to {huawei_target_image}: {e}")
             continue
