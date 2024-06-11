@@ -2,7 +2,7 @@
 Author: llody 745719408@qq.com
 Date: 2024-06-11 18:07:57
 LastEditors: llody 745719408@qq.com
-LastEditTime: 2024-06-11 18:15:47
+LastEditTime: 2024-06-11 18:33:45
 FilePath: \sync-images\.github\workflows\app\sync_images.py
 Description: 批量镜像同步脚本
 '''
@@ -30,8 +30,16 @@ for image_name, tags in images.items():
         aliyun_target_image = f"docker://{aliyun_registry}/{image_name}:{tag}"
         huawei_target_image = f"docker://{huawei_registry}/{image_name}:{tag}"
         
-        print(f"Syncing {source_image} to {aliyun_target_image} for architecture {arch}")
-        subprocess.run(["skopeo", "copy", "--all", source_image, aliyun_target_image], check=True)
+        try:
+            print(f"Syncing {source_image} to {aliyun_target_image} for architecture {arch}")
+            subprocess.run(["skopeo", "copy", "--all", source_image, aliyun_target_image], check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"Error syncing {source_image} to {aliyun_target_image}: {e}")
+            continue
         
-        print(f"Syncing {source_image} to {huawei_target_image} for architecture {arch}")
-        subprocess.run(["skopeo", "copy", "--all", source_image, huawei_target_image], check=True)
+        try:
+            print(f"Syncing {source_image} to {huawei_target_image} for architecture {arch}")
+            subprocess.run(["skopeo", "copy", "--all", source_image, huawei_target_image], check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"Error syncing {source_image} to {huawei_target_image}: {e}")
+            continue

@@ -1,7 +1,7 @@
 images:
   llody/udocker:
-    - tag: v1.1.1
     - tag: latest
+    - tag: v1.1.1
   llody/weixin-robot:
     - tag: v1-amd64
     - tag: v1-arm64
