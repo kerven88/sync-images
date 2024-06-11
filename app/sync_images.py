@@ -2,15 +2,15 @@
 Author: llody 745719408@qq.com
 Date: 2024-06-11 18:07:57
 LastEditors: llody 745719408@qq.com
-LastEditTime: 2024-06-11 18:09:51
+LastEditTime: 2024-06-11 18:15:47
 FilePath: \sync-images\.github\workflows\app\sync_images.py
 Description: 批量镜像同步脚本
 '''
 import yaml
 import subprocess
-image_list_path = "app/images-to-sync.yml"
+
 # 读取images-to-sync.yml文件
-with open(image_list_path, "r") as stream:
+with open("images-to-sync.yml", "r") as stream:
     try:
         images = yaml.safe_load(stream)["images"]
     except yaml.YAMLError as exc:

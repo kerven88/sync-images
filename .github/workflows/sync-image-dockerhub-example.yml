@@ -44,4 +44,6 @@ jobs:
     
     - name: Sync images
       run: |
+        pwd
+        ls
         python3 app/sync_images.py
