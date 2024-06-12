@@ -12,6 +12,13 @@ images:
   llody/weixin-robot:
     - tag: v1-amd64
     - tag: v1-arm64
+  llody/nginx:
+    - tag: v1.23.4
+    - tag: v1.22.0
+    - tag: v1.20
+    - tag: v1.22.0-arm64
+    - tag: v1.22.0-amd64
+    - tag: 1.22.0-base
   llody/busybox-tools:
     - tag: v20240507
     - tag: v20240409
