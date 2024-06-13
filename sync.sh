@@ -3,7 +3,7 @@
  # @Author: llody 745719408@qq.com
  # @Date: 2024-06-13 09:47:43
  # @LastEditors: llody 745719408@qq.com
- # @LastEditTime: 2024-06-13 14:46:09
+ # @LastEditTime: 2024-06-13 15:04:02
  # @FilePath: \K8S\组件包\skopeo\shell脚本版\skopeo.sh
  # @Description: shell版镜像同步脚本
 ### 
