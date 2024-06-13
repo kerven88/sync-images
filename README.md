@@ -115,3 +115,12 @@ images:
   
 
 ```
+
+
+# 拉取华为云同步镜像
+
+```bash
+docker pull swr.cn-southwest-2.myhuaweicloud.com/llody/udocker:v1.1.1
+```
+
+> 只需要根据tag表，拉取镜像的同步TAG即可。
