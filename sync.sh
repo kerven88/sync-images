@@ -3,7 +3,7 @@
  # @Author: llody 745719408@qq.com
  # @Date: 2024-06-13 09:47:43
  # @LastEditors: llody 745719408@qq.com
- # @LastEditTime: 2024-06-13 15:04:02
+ # @LastEditTime: 2024-06-14 16:17:34
  # @FilePath: \K8S\组件包\skopeo\shell脚本版\skopeo.sh
  # @Description: shell版镜像同步脚本
 ### 
@@ -11,8 +11,8 @@
 HUB_USERNAME=$1
 HUB_PASSWORD=$2
 
-hub="swr.cn-southwest-2.myhuaweicloud.com"
-repo="$hub/llody"
+hub="registry.cn-hangzhou.aliyuncs.com"
+repo="$hub/llody55"
 
 
 rm -rf images.yaml
