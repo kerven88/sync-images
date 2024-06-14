@@ -3,8 +3,6 @@ echo "gcr.io:" >> images.yaml
 echo "  images:" >> images.yaml
 echo "    kaniko-project/executor:" >> images.yaml
 skopeo list-tags --tls-verify=false  docker://gcr.io/kaniko-project/executor | grep \"v | grep '[0-9]' | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | awk -F '"' '{print "    - "$2}' >> images.yaml
-echo "    google-samples/xtrabackup:" >> images.yaml
-skopeo list-tags --tls-verify=false  docker://gcr.io/google-samples/xtrabackup | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | awk -F '"' '{print "    - "$2}' >> images.yaml
 echo "docker.io:" >> images.yaml
 echo "  images:" >> images.yaml
 echo "    calico/typha:" >> images.yaml
