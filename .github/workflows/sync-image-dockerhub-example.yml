@@ -48,8 +48,8 @@ jobs:
     # - name: Sync images
     #   run: |
     #     python3 sync_images.py
-    
+
     - name: Sync images
       run: |
         chmod +x sync.sh
-        ./sync.sh "${{ secrets.HWYUM_DOCKER_USERNAME }}" "${{ secrets.HWYUM_DOCKER_PASSWORD }}"
+        ./sync.sh "${{ secrets.ALIYUM_DOCKER_USERNAME }}" "${{ secrets.ALIYUM_DOCKER_PASSWORD }}"
