@@ -1,8 +1,6 @@
 echo "镜像版本查询中，请稍等。。。。。" 
 echo "docker.io:" >> images.yaml
 echo "  images:" >> images.yaml
-echo "    calico/typha:" >> images.yaml
-skopeo list-tags --tls-verify=false  docker://docker.io/calico/typha | grep '"v' | awk '/v3/ {flag=1} flag' | grep -v -E 'alpha|beta|rc|amd64|ppc64le|arm64|arm|s390x|SNAPSHOT|debug|master|main|\}|\]|\{|Repository|Tags|dev|g|version|-' | awk -F '"' '{print $2}' | sort -V | awk -F. '$1 == "v3" && ($2 > 10 || ($2 == 10 && $3 > 0)) {print "    - " $0}'   >> images.yaml
 echo "    calico/cni:" >> images.yaml
 skopeo list-tags --tls-verify=false  docker://docker.io/calico/cni | grep '"v' | awk '/v3/ {flag=1} flag' | grep -v -E 'alpha|beta|rc|amd64|ppc64le|arm64|arm|s390x|SNAPSHOT|debug|master|main|\}|\]|\{|Repository|Tags|dev|g|version|-' | awk -F '"' '{print $2}' | sort -V | awk -F. '$1 == "v3" && ($2 > 10 || ($2 == 10 && $3 > 0)) {print "    - " $0}' >> images.yaml
 echo "    calico/node:" >> images.yaml
