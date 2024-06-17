@@ -11,7 +11,7 @@
 HUB_USERNAME=$1
 HUB_PASSWORD=$2
 
-hub="swr.cn-southwest-2.myhuaweicloud.com"
+hub=$3
 repo="$hub/llody55"
 
 
