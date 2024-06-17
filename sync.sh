@@ -3,7 +3,7 @@
  # @Author: llody 745719408@qq.com
  # @Date: 2024-06-13 09:47:43
  # @LastEditors: llody 745719408@qq.com
- # @LastEditTime: 2024-06-14 16:17:34
+ # @LastEditTime: 2024-06-17 10:57:03
  # @FilePath: \K8S\组件包\skopeo\shell脚本版\skopeo.sh
  # @Description: shell版镜像同步脚本
 ### 
@@ -11,7 +11,7 @@
 HUB_USERNAME=$1
 HUB_PASSWORD=$2
 
-hub="registry.cn-hangzhou.aliyuncs.com"
+hub="swr.cn-southwest-2.myhuaweicloud.com"
 repo="$hub/llody55"
 
 
