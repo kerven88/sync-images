@@ -12,7 +12,7 @@ HUB_USERNAME=$1
 HUB_PASSWORD=$2
 
 hub=$3
-repo="$hub/llody55"
+repo="$hub/llody"
 
 
 rm -rf images.yaml
