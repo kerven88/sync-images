@@ -1,6 +1,8 @@
 echo "镜像版本查询中，请稍等。。。。。" 
 echo "docker.io:" >> images.yaml
 echo "  images:" >> images.yaml
+echo "    llody/udocker:" >> images.yaml
+skopeo list-tags --tls-verify=false  docker://docker.io/llody/udocker | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v 0.8 | grep -v '-'| awk -F '"' '{print "    - "$2}' >> images.yaml
 echo "    calico/cni:" >> images.yaml
 skopeo list-tags --tls-verify=false  docker://docker.io/calico/cni | grep '"v' | awk '/v3/ {flag=1} flag' | grep -v -E 'alpha|beta|rc|amd64|ppc64le|arm64|arm|s390x|SNAPSHOT|debug|master|main|\}|\]|\{|Repository|Tags|dev|g|version|-' | awk -F '"' '{print $2}' | sort -V | awk -F. '$1 == "v3" && ($2 > 10 || ($2 == 10 && $3 > 0)) {print "    - " $0}' >> images.yaml
 echo "    calico/node:" >> images.yaml
@@ -12,7 +14,7 @@ skopeo list-tags --tls-verify=false  docker://docker.io/calico/kube-controllers 
 echo "registry.k8s.io:" >> images.yaml
 echo "  images:" >> images.yaml
 echo "    etcd:" >> images.yaml
-skopeo list-tags --tls-verify=false  docker://registry.k8s.io/etcd | grep -v v | grep -v 2.0| grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' >> images.yaml
+skopeo list-tags --tls-verify=false  docker://registry.k8s.io/etcd | grep -v v | grep -v 2.0 | grep -v 2.2| grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' >> images.yaml
 echo "    pause:" >> images.yaml
 skopeo list-tags --tls-verify=false  docker://registry.k8s.io/pause | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v 0.8 | grep -v '-'| awk -F '"' '{print "    - "$2}' | grep -E '^[[:space:]]*-[[:space:]]*[0-9]+(\.[0-9]+)*$' >> images.yaml
 echo "    kube-proxy:" >> images.yaml
