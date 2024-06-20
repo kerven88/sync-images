@@ -1,4 +1,4 @@
-echo "镜像版本查询中，请稍等。。。。。" 
+echo "镜像版本查询中，请稍等。。。。。"  
 echo "docker.io:" >> images.yaml
 echo "  images:" >> images.yaml
 echo "    llody/udocker:" >> images.yaml
@@ -40,7 +40,7 @@ skopeo list-tags --tls-verify=false  docker://quay.io/prometheus-operator/promet
 echo "    brancz/kube-rbac-proxy:" >> images.yaml
 skopeo list-tags --tls-verify=false  docker://quay.io/brancz/kube-rbac-proxy | grep -v alpha | grep -v v0.1.0 | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' | sort -V >> images.yaml
 echo "    cilium/cilium:" >> images.yaml
-skopeo list-tags --tls-verify=false  docker://quay.io/cilium/cilium | grep '"v' | awk '/v1/ {flag=1} flag' | grep -v -E 'alpha|beta|rc|amd64|ppc64le|arm64|arm|s390x|SNAPSHOT|debug|master|main|\}|\]|\{|Repository|Tags|dev|g|-' | awk -F '"' '{print $2}' | sort -V | awk -F. '$1 == "v1" && ($2 > 9 || ($2 == 9 && $3 > 0)) {print "    - " $0}' >> images.yaml
+skopeo list-tags --tls-verify=false  docker://quay.io/cilium/cilium | grep '"v' | awk '/v1/ {flag=1} flag' | grep -v -E 'alpha|beta|rc|amd64|ppc64le|arm64|arm|s390x|SNAPSHOT|debug|master|main|\}|\]|\{|Repository|Tags|dev|g|-' | awk -F '"' '{print $2}' | sort -V | awk -F. '$1 == "v1" && ($2 > 10 || ($2 == 10 && $3 > 0)) {print "    - " $0}' >> images.yaml
 echo "    cilium/operator-generic:" >> images.yaml
 skopeo list-tags --tls-verify=false  docker://quay.io/cilium/operator-generic | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' | sort -V >> images.yaml
 echo "registry.k8s.io:" >> images.yaml
