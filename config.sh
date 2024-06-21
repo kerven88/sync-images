@@ -11,10 +11,12 @@ echo "    calico/pod2daemon-flexvol:" >> images.yaml
 skopeo list-tags --tls-verify=false  docker://docker.io/calico/pod2daemon-flexvol | grep '"v' | awk '/v3/ {flag=1} flag' | grep -v -E 'alpha|beta|rc|amd64|ppc64le|arm64|arm|s390x|SNAPSHOT|debug|master|main|\}|\]|\{|Repository|Tags|dev|g|version|-' | awk -F '"' '{print $2}' | sort -V | awk -F. '$1 == "v3" && ($2 > 10 || ($2 == 10 && $3 > 0)) {print "    - " $0}' >> images.yaml
 echo "    calico/kube-controllers:" >> images.yaml
 skopeo list-tags --tls-verify=false  docker://docker.io/calico/kube-controllers | grep '"v' | awk '/v3/ {flag=1} flag' | grep -v -E 'alpha|beta|rc|amd64|ppc64le|arm64|arm|s390x|SNAPSHOT|debug|master|main|\}|\]|\{|Repository|Tags|dev|g|version|-' | awk -F '"' '{print $2}' | sort -V | awk -F. '$1 == "v3" && ($2 > 10 || ($2 == 10 && $3 > 0)) {print "    - " $0}' >> images.yaml
+echo "    flannel/flannel:" >> images.yaml
+skopeo list-tags --tls-verify=false  docker://docker.io/flannel/flannel | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' | sort -V  >> images.yaml
+echo "    flannel/flannel-cni-plugin:" >> images.yaml
+skopeo list-tags --tls-verify=false  docker://docker.io/flannel/flannel-cni-plugin | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' | sort -V >> images.yaml
 echo "quay.io:" >> images.yaml
 echo "  images:" >> images.yaml
-echo "    coreos/flannel:" >> images.yaml
-skopeo list-tags --tls-verify=false  docker://quay.io/coreos/flannel | grep '"v' | awk '/v0/ {flag=1} flag' | grep -v -E 'alpha|beta|rc|amd64|ppc64le|arm64|arm|s390x|SNAPSHOT|debug|master|main|\}|\]|\{|Repository|Tags|dev|g|-' | awk -F '"' '{print $2}' | sort -V | awk -F. '$1 == "v0" && ($2 > 9 || ($2 == 9 && $3 > 0)) {print "    - " $0}' >> images.yaml
 echo "    ceph/ceph:" >> images.yaml
 skopeo list-tags --tls-verify=false  docker://quay.io/ceph/ceph | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' | sort -V >> images.yaml
 echo "    cephcsi/cephcsi:" >> images.yaml
