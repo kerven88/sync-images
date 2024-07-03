@@ -20,8 +20,8 @@ jobs:
         # sudo apt-get install -y skopeo
         sudo apt-get install -y python3-pip
         pip3 install pyyaml
-        chmod +x ./bin/skopeo
-        mv ./bin/skopeo /usr/bin/skopeo
+        sudo chmod +x ./bin/skopeo
+        sudo mv ./bin/skopeo /usr/bin/
         skopeo -v
 
     - name: Set up Docker Buildx
