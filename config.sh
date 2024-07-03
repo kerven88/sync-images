@@ -1,5 +1,6 @@
 echo "镜像版本查询中，请稍等。。。。。"  
 echo "docker.io:" >> images.yaml
+echo "  images:" >> images.yaml
 # echo "    llody/udocker:" >> images.yaml
 # skopeo list-tags --tls-verify=false  docker://docker.io/llody/udocker | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v 0.8 | grep -v '-'| awk -F '"' '{print "    - "$2}' >> images.yaml
 # echo "    calico/cni:" >> images.yaml
@@ -33,9 +34,9 @@ skopeo list-tags --tls-verify=false docker://python | grep -v alpha | grep -v be
 echo "    golang:" >> images.yaml
 skopeo list-tags --tls-verify=false docker://golang | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-' | awk -F '"' '{print $2}' | awk -F '.' '($1 > 1 || ($1 == 1 && $2 > 17)) && /^[0-9.]+$/ {print "    - " $0}' >> images.yaml
 echo "    gitlab/gitlab-runner:" >> images.yaml
-skopeo list-tags --tls-verify=false docker://gitlab/gitlab-runner | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-' | awk -F '"' '{print $2}' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | awk -F '[v.]' '$2 >= 14 {print "    - \"" $0 "\","}' >> images.yaml
+skopeo list-tags --tls-verify=false docker://gitlab/gitlab-runner | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-' | awk -F '"' '{print $2}' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | awk -F '[v.]' '$2 >= 14 {print "    - " $0}' >> images.yaml
 echo "    traefik:" >> images.yaml
-skopeo list-tags --tls-verify=false docker://traefik | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-' | awk -F '"' '{print $2}' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | awk -F '[v.]' '$2 >= 2 {print "    - \"" $0 "\","}' >> images.yaml
+skopeo list-tags --tls-verify=false docker://traefik | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-' | awk -F '"' '{print $2}' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | awk -F '[v.]' '$2 >= 2 {print "    - " $0}' >> images.yaml
 echo "docker.elastic.co:" >> images.yaml
 echo "  images:" >> images.yaml
 echo "    elasticsearch/elasticsearch:" >> images.yaml
