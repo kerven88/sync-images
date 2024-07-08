@@ -95,10 +95,10 @@ skopeo list-tags --tls-verify=false  docker://docker.elastic.co/app-search/app-s
 # skopeo list-tags --tls-verify=false  docker://quay.io/cilium/cilium | grep '"v' | awk '/v1/ {flag=1} flag' | grep -v -E 'alpha|beta|rc|amd64|ppc64le|arm64|arm|s390x|SNAPSHOT|debug|master|main|\}|\]|\{|Repository|Tags|dev|g|-' | awk -F '"' '{print $2}' | sort -V | awk -F. '$1 == "v1" && ($2 > 10 || ($2 == 10 && $3 > 0)) {print "    - " $0}' >> images.yaml
 # echo "    cilium/operator-generic:" >> images.yaml
 # skopeo list-tags --tls-verify=false  docker://quay.io/cilium/operator-generic | grep -v alpha | grep -v v1.9.3 | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' | sort -V >> images.yaml
-echo "gcr.io:" >> images.yaml
+echo "ghcr.io:" >> images.yaml
 echo "  images:" >> images.yaml
 echo "    wg-easy/wg-easy:" >> images.yaml
-skopeo list-tags --tls-verify=false docker://ghcr.io/wg-easy/wg-easy | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' | sort -V >> images.yaml
+skopeo list-tags --tls-verify=false docker://ghcr.io/wg-easy/wg-easy | grep -v alpha | grep -v 1.0 | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' | sort -V >> images.yaml
 # echo "registry.k8s.io:" >> images.yaml
 # echo "  images:" >> images.yaml
 # echo "    etcd:" >> images.yaml
