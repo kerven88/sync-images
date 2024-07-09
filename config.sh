@@ -44,7 +44,7 @@ echo "  images:" >> images.yaml
 echo "docker.elastic.co:" >> images.yaml
 echo "  images:" >> images.yaml
 echo "    elasticsearch/elasticsearch:" >> images.yaml
-skopeo list-tags --tls-verify=false  docker://docker.elastic.co/elasticsearch/elasticsearch | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print $2}' | awk -F '.' '$1 >= 7  {print "    - " $0}' >> images.yaml
+skopeo list-tags --tls-verify=false  docker://docker.elastic.co/elasticsearch/elasticsearch | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print $2}' | awk -F '.' '$1 >= 8  {print "    - " $0}' | sort -V >> images.yaml
 echo "    kibana/kibana:" >> images.yaml
 skopeo list-tags --tls-verify=false  docker://docker.elastic.co/kibana/kibana | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print $2}' | awk -F '.' '$1 >= 7  {print "    - " $0}' >> images.yaml
 echo "    logstash/logstash:" >> images.yaml
@@ -63,8 +63,8 @@ echo "    beats/metricbeat:" >> images.yaml
 skopeo list-tags --tls-verify=false  docker://docker.elastic.co/beats/metricbeat | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print $2}' | awk -F '.' '$1 >= 7  {print "    - " $0}' >> images.yaml
 # echo "    apm/apm-server:" >> images.yaml
 # skopeo list-tags --tls-verify=false  docker://docker.elastic.co/apm/apm-server | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print $2}' | awk -F '.' '$1 >= 7  {print "    - " $0}' >> images.yaml
-echo "    app-search/app-search:" >> images.yaml
-skopeo list-tags --tls-verify=false  docker://docker.elastic.co/app-search/app-search | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' >> images.yaml
+# echo "    app-search/app-search:" >> images.yaml
+# skopeo list-tags --tls-verify=false  docker://docker.elastic.co/app-search/app-search | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' >> images.yaml
 # echo "quay.io:" >> images.yaml
 # echo "  images:" >> images.yaml
 # echo "    ceph/ceph:" >> images.yaml
